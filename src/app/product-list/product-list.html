@@ -1,0 +1,20 @@
+<input [(ngModel)]="filterCategory" placeholder="Ej: Electrónica" />
+
+<select [(ngModel)]="filterAvailable">
+  <option value="">Todos</option>
+  <option value="Disponible">Disponible</option>
+  <option value="No Disponible">No Disponible</option>
+</select>
+
+<table>
+  <tr *ngFor="let product of filteredProducts()">
+    <td>{{ product.name }}</td>
+    <td>{{ product.price | currency }}</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.available }}</td>
+    <td>
+      <button [routerLink]="['/edit', product.id]">Editar</button>
+      <button (click)="deleteProduct(product.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>
